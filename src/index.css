@@ -1,27 +1,65 @@
 @import "tailwindcss";
 
+/**
+ * Thème "IA ou pas IA ?" — dark, accents rose + vert (mascotte).
+ */
 @theme {
-  --color-bg: #0a0a0f;
-  --color-bg-elevated: #14141c;
-  --color-surface: #1c1c28;
-  --color-border: #2a2a3a;
-  --color-text: #ffffff;
-  --color-text-muted: #9090a0;
-  --color-accent: #16a34a;
-  --color-danger: #ef4444;
-  --color-brand: #2d6a5f;
+  --color-bg: #0a0a0c;
+  --color-bg-soft: #100d14;
+  --color-surface: #141019;
+  --color-surface-2: #1a1622;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-soft: rgba(255, 255, 255, 0.05);
 
-  --font-display: "Inter", system-ui, sans-serif;
+  --color-text: #ffffff;
+  --color-muted: #9a96a6;
+
+  --color-pink: #f9a8d4;
+  --color-pink-strong: #f472b6;
+  --color-green: #72ff67;
+  --color-mint: #86efac;
+  --color-amber: #fbbf24;
+  --color-coral: #f97070;
+  --color-red: #ef4444;
+
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-outfit: "Outfit", system-ui, sans-serif;
+  --font-manrope: "Manrope", system-ui, sans-serif;
 }
 
-html, body, #root {
-  height: 100%;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-display);
-  -webkit-font-smoothing: antialiased;
+html,
+body,
+#root {
+  min-height: 100%;
 }
 
 body {
   margin: 0;
+  background: radial-gradient(50rem 42rem at 85% 82%, rgba(249, 168, 212, 0.1), transparent 100%), radial-gradient(50rem 42rem at 8% 11%, rgba(249, 168, 212, 0.1), transparent 100%), #080810;
+  background-attachment: fixed;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+
+/* Mascotte qui flotte doucement */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
 }
