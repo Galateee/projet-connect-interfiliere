@@ -49,13 +49,13 @@ export function useQuiz(onFinish: () => void): QuizController {
     if (!selected || answered) return;
     setPercent((p) => clampPercent(p + selected.impact.replaceability));
     setLastCorrect(!!selected.isOptimal);
+    setHistory((h) => [...h, !!selected.isOptimal]);
     setAnswered(true);
     setHintOpen(false);
   }, [selected, answered]);
 
   const next = useCallback(() => {
     if (!answered) return;
-    setHistory((h) => [...h, isCorrect]);
     if (isLast) {
       onFinish();
       return;
@@ -64,7 +64,7 @@ export function useQuiz(onFinish: () => void): QuizController {
     setSelectedId(null);
     setAnswered(false);
     setHintOpen(false);
-  }, [answered, isCorrect, isLast, onFinish]);
+  }, [answered, isLast, onFinish]);
 
   // Raccourcis clavier : 1–4 pour choisir, Entrée pour valider / passer.
   useEffect(() => {

@@ -50,7 +50,7 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
         </span>
       </header>
 
-      <main className="flex flex-1 items-center justify-center px-6 py-10">
+      <main className="flex flex-1 items-start justify-center px-6 pb-10 pt-[14vh]">
         <div className="flex w-full max-w-205.5 flex-col gap-8.75">
           {/* timeline */}
           <div className="flex flex-col gap-3.75">
@@ -60,7 +60,7 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
             <div className="flex gap-1">
               {questions.map((q, i) => {
                 let bg = whiteA(0.15);
-                if (i < index) bg = withAlpha(history[i] ? palette.mint : palette.coral, 0.5);
+                if (i < history.length) bg = withAlpha(history[i] ? palette.mint : palette.coral, 0.5);
                 else if (i === index) bg = "#fff";
                 return <div key={q.id} className="h-1 flex-1 rounded-full" style={{ backgroundColor: bg }} />;
               })}
@@ -68,7 +68,7 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
           </div>
 
           {/* Colonne principale + jauge */}
-          <div className="flex gap-11.5">
+          <div className="flex items-start gap-11.5">
             <div className="flex flex-1 flex-col gap-3.75">
               {/* Carte question */}
               <div
