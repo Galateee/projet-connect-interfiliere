@@ -121,7 +121,11 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
               {/* Boutons */}
               {answered ? (
                 <div className="flex justify-end">
-                  <button type="button" onClick={quiz.next} className="flex items-center justify-center gap-2 rounded-[43px] px-10.25 py-2.5" style={{ backgroundColor: palette.pink, ...nextBtnText }}>
+                  <button
+                    type="button"
+                    onClick={quiz.next}
+                    className="flex cursor-pointer items-center justify-center gap-2 rounded-[43px] px-10.25 py-2.5 hover:brightness-110"
+                    style={{ backgroundColor: palette.pink, ...nextBtnText }}>
                     {quiz.isLast ? "Terminer" : "Suivant"}
                     <FontAwesomeIcon icon={faArrowTurnDown} flip="horizontal" />
                   </button>
@@ -131,7 +135,7 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
                   <button
                     type="button"
                     onClick={quiz.toggleHint}
-                    className="flex items-center justify-center gap-2 rounded-[93px] px-4 py-2.5"
+                    className="flex cursor-pointer items-center justify-center gap-2 rounded-[93px] px-4 py-2.5 hover:brightness-110"
                     style={{
                       backgroundColor: withAlpha(palette.pink, 0.4),
                       border: `1px solid ${palette.pink}`,
@@ -144,9 +148,8 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
                     <button
                       type="button"
                       onClick={quiz.validate}
-                      className="flex items-center justify-center gap-2 rounded-[43px] px-10.25 py-2.5"
+                      className="flex cursor-pointer items-center justify-center gap-2 rounded-[43px] bg-white/80 px-10.25 py-2.5 hover:bg-white"
                       style={{
-                        backgroundColor: whiteA(0.8),
                         border: `1px solid ${whiteA(0.75)}`,
                         ...validateBtnText,
                       }}>
