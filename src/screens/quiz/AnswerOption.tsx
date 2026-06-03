@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { palette, whiteA, withAlpha } from "../../theme/palette";
@@ -67,8 +68,11 @@ function RightSlot({ answered, isSelected, isCorrect, number }: AnswerOptionProp
 }
 
 export function AnswerOption(props: AnswerOptionProps) {
-  const { letter, text, answered, onClick } = props;
+  const { letter, text, answered, isSelected, onClick } = props;
   const v = visual(props);
+  const [hovered, setHovered] = useState(false);
+  const isHoverable = !answered && !isSelected;
+  const showHover = isHoverable && hovered;
 
   return (
     <button
@@ -76,8 +80,14 @@ export function AnswerOption(props: AnswerOptionProps) {
       disabled={answered}
       aria-pressed={props.isSelected}
       onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       className="flex items-center justify-between gap-3 rounded-[14px] px-[17.6px] py-[13.6px] text-left transition-colors disabled:cursor-default"
-      style={{ backgroundColor: v.bg, border: `0.8px solid ${v.border}` }}>
+      style={{
+        backgroundColor: showHover ? whiteA(0.08) : v.bg,
+        border: `0.8px solid ${showHover ? whiteA(0.22) : v.border}`,
+        cursor: isHoverable ? "pointer" : undefined,
+      }}>
       <span className="flex items-center gap-3">
         <span className="flex h-7.5 w-7.5 shrink-0 items-center justify-center rounded-lg" style={{ backgroundColor: v.letterBg }}>
           <span style={{ ...answerLetter, color: v.letterColor }}>{letter}</span>

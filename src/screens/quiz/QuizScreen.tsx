@@ -50,7 +50,7 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
         </span>
       </header>
 
-      <main className="flex flex-1 items-start justify-center px-6 pb-10 pt-[14vh]">
+      <main className="flex flex-1 items-start justify-center px-6 pb-10 pt-[6vh]">
         <div className="flex w-full max-w-205.5 flex-col gap-8.75">
           {/* timeline */}
           <div className="flex flex-col gap-3.75">
@@ -127,7 +127,7 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center justify-between gap-3.75">
+                <div className="flex h-11.5 items-center justify-between gap-3.75">
                   <button
                     type="button"
                     onClick={quiz.toggleHint}
