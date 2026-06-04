@@ -14,7 +14,7 @@ type StartScreenProps = {
 export function StartScreen({ onStart }: StartScreenProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar onStart={onStart} />
+      <Navbar cta={{ label: "Commencer l'évaluation", onClick: onStart }} />
       <main className="w-full px-6">
         <div className="mx-auto flex w-full max-w-238.25 flex-col items-center gap-32.75 pt-17 pb-25.5">
           <Hero onStart={onStart} />

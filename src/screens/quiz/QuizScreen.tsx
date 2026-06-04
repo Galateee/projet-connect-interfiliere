@@ -1,16 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight, faArrowTurnDown, faCheck, faRobot, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faArrowTurnDown, faCheck, faRobot, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 import { questions } from "../../data/questions";
-import { BAR_BG, palette, tintedSurface, whiteA, withAlpha } from "../../theme/palette";
+import { palette, tintedSurface, whiteA, withAlpha } from "../../theme/palette";
 import { AnswerOption } from "./AnswerOption";
 import { RiskGauge } from "./RiskGauge";
 import { useQuiz } from "./useQuiz";
 import { commentText, headerLink, hintLabel, hintText, nextBtnText, scenarioText, secondaryBtnText, situationEyebrow, timelineLabel, validateBtnText } from "./quizStyles";
 
+import type { QuizSummary } from "../../types/quiz";
+
 type QuizScreenProps = {
-  /** Retour à l'accueil (ou fin du quiz — l'écran résultats reste à concevoir). */
   onExit: () => void;
+  onFinish: (summary: QuizSummary) => void;
 };
 
 const LETTERS = ["A", "B", "C", "D", "E", "F"];
@@ -24,8 +27,8 @@ const GLOW_NORMAL = glow(palette.pink, 0.1);
 const GLOW_CORRECT = glow(palette.green, 0.1);
 const GLOW_WRONG = glow(palette.red, 0.1);
 
-export function QuizScreen({ onExit }: QuizScreenProps) {
-  const quiz = useQuiz(onExit);
+export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
+  const quiz = useQuiz(onFinish);
   const { question, index, total, percent, history, selectedId, selected, answered, isCorrect, lastCorrect, mascotState, hintOpen } = quiz;
 
   return (
@@ -35,20 +38,14 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 transition-opacity duration-700" style={{ background: lastCorrect ? GLOW_CORRECT : GLOW_WRONG, opacity: answered ? 1 : 0 }} />
 
       {/* Header quiz */}
-      <header
-        className="sticky top-0 z-50 flex h-18 items-center justify-between px-25 backdrop-blur-md"
-        style={{
-          backgroundColor: BAR_BG,
-          borderBottom: `1px solid ${whiteA(0.2)}`,
-        }}>
-        <button type="button" onClick={onExit} className="flex items-center gap-2 text-white/50 transition-colors hover:text-text" style={{ ...headerLink, color: undefined }}>
-          <FontAwesomeIcon icon={faArrowLeft} />
-          Retour à l'accueil
-        </button>
-        <span style={headerLink}>
-          Question <span style={{ color: "#fff" }}>{index + 1}</span>/{total}
-        </span>
-      </header>
+      <Navbar
+        back={{ label: "Retour à l'accueil", onClick: onExit }}
+        right={
+          <span style={headerLink}>
+            Question <span style={{ color: "#fff" }}>{index + 1}</span>/{total}
+          </span>
+        }
+      />
 
       <main className="flex flex-1 items-start justify-center px-6 pb-10 pt-[6vh]">
         <div className="flex w-full max-w-205.5 flex-col gap-8.75">

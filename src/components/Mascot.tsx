@@ -113,9 +113,10 @@ type MascotAnimatedProps = {
   size?: number;
   className?: string;
   preload?: boolean;
+  loop?: boolean;
 };
 
-export function MascotAnimated({ state, size = 120, className, preload = false }: MascotAnimatedProps) {
+export function MascotAnimated({ state, size = 120, className, preload = false, loop }: MascotAnimatedProps) {
   const cached = useLottie(ANIM_URL[state]);
   const sharpRef = useRef<LottieRefCurrentProps>(null);
   const glowRef = useRef<LottieRefCurrentProps>(null);
@@ -134,7 +135,7 @@ export function MascotAnimated({ state, size = 120, className, preload = false }
     glowRef.current?.goToAndPlay(0, true);
   }, [sharpData]);
 
-  const loop = state === "idle";
+  const isLooping = loop ?? state === "idle";
   const blur = size * GLOW_BLUR_RATIO * 0.5;
 
   return (
@@ -145,7 +146,7 @@ export function MascotAnimated({ state, size = 120, className, preload = false }
           <Lottie
             lottieRef={glowRef}
             animationData={glowData}
-            loop={loop}
+            loop={isLooping}
             autoplay
             aria-hidden
             style={{
@@ -159,7 +160,7 @@ export function MascotAnimated({ state, size = 120, className, preload = false }
               pointerEvents: "none",
             }}
           />
-          <Lottie lottieRef={sharpRef} animationData={sharpData} loop={loop} autoplay style={{ position: "relative", width: "100%", height: "100%" }} />
+          <Lottie lottieRef={sharpRef} animationData={sharpData} loop={isLooping} autoplay style={{ position: "relative", width: "100%", height: "100%" }} />
         </>
       )}
     </div>
