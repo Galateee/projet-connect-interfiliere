@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRight, faBolt, faBrain, faComments, faShieldHalved } from "@fortawesome/free-solid-svg-icons";
 import { palette, whiteA, withAlpha } from "../../theme/palette";
 import { formationEyebrow, formationPara, formationTitle, pillarDesc, pillarTitle } from "./resultStyles";
+import { VideoModal } from "./VideoModal";
 
 type Pillar = { icon: IconDefinition; title: string; desc: string };
 
@@ -12,8 +14,13 @@ const PILLARS: Pillar[] = [
   { icon: faComments, title: "Communication & transparence", desc: "Comment parler de l'IA à vos clients, collaborateurs." },
 ];
 
+/** Vidéo de présentation */
+const VIDEO_SRC = "/formation-manager-ia.mp4";
+
 /** Carte « Formation recommandée » mise en avant */
 export function TrainingCard() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <section
       className="flex w-full flex-col gap-6 rounded-[20px] px-9 py-8"
@@ -43,7 +50,8 @@ export function TrainingCard() {
 
       <button
         type="button"
-        className="flex w-fit items-center justify-center gap-2 rounded-[43px] px-7 py-2.5 transition-[filter] hover:brightness-110"
+        onClick={() => setVideoOpen(true)}
+        className="flex w-fit cursor-pointer items-center justify-center gap-2 rounded-[43px] px-7 py-2.5 transition-[filter] hover:brightness-110"
         style={{
           backgroundColor: palette.green,
           fontFamily: '"Outfit", system-ui, sans-serif',
@@ -53,6 +61,8 @@ export function TrainingCard() {
         }}>
         Voir la vidéo <FontAwesomeIcon icon={faArrowRight} />
       </button>
+
+      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} src={VIDEO_SRC} />
     </section>
   );
 }
