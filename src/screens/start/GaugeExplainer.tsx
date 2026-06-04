@@ -10,6 +10,13 @@ const TIER_COLOR: Record<GaugeTier["color"], string> = {
   red: palette.coral,
 };
 
+// Remplissage indicatif de la barre par palier.
+const TIER_FILL: Record<GaugeTier["color"], string> = {
+  green: "15%",
+  amber: "45%",
+  red: "75%",
+};
+
 const AXIS = [100, 50, 10];
 
 export function GaugeExplainer() {
@@ -38,7 +45,7 @@ export function GaugeExplainer() {
                   {tier.range}
                 </span>
                 <div className="h-1.25 w-full shrink-0 overflow-hidden rounded-full lg:w-61.5" style={{ backgroundColor: withAlpha(accent, 0.2), border: `0.8px solid ${withAlpha(accent, 0.3)}` }}>
-                  <div className="h-full rounded-full" style={{ width: "31%", backgroundColor: accent }} />
+                  <div className="h-full rounded-full" style={{ width: TIER_FILL[tier.color], backgroundColor: accent }} />
                 </div>
                 <span style={tierDesc}>
                   <span style={{ color: accent }}>{tier.level}</span>

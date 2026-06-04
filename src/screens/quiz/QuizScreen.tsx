@@ -6,6 +6,7 @@ import { questions } from "../../data/questions";
 import { palette, tintedSurface, whiteA, withAlpha } from "../../theme/palette";
 import { AnswerOption } from "./AnswerOption";
 import { RiskGauge } from "./RiskGauge";
+import { RiskGaugeMobile } from "./RiskGaugeMobile";
 import { useQuiz } from "./useQuiz";
 import { commentText, headerLink, hintLabel, hintText, nextBtnText, scenarioText, secondaryBtnText, situationEyebrow, timelineLabel, validateBtnText } from "./quizStyles";
 
@@ -42,16 +43,17 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
         back={{ label: "Retour à l'accueil", onClick: onExit }}
         right={
           <span style={headerLink}>
-            Question <span style={{ color: "#fff" }}>{index + 1}</span>/{total}
+            <span className="hidden lg:inline">Question </span>
+            <span style={{ color: "#fff" }}>{index + 1}</span>/{total}
           </span>
         }
       />
 
-      <main className="flex flex-1 items-start justify-center px-6 pb-10 pt-[6vh]">
-        <div className="flex w-full max-w-205.5 flex-col gap-8.75">
+      <main className="flex flex-1 items-start justify-center px-6 pb-4 pt-4 lg:pb-10 lg:pt-[6vh]">
+        <div className="flex w-full max-w-205.5 flex-col gap-4 lg:gap-8.75">
           {/* timeline */}
           <div className="flex flex-col gap-3.75">
-            <span style={timelineLabel}>
+            <span className="hidden lg:inline" style={timelineLabel}>
               Question <span style={{ color: "#fff" }}>{index + 1}</span> / {total}
             </span>
             <div className="flex gap-1">
@@ -64,12 +66,15 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
             </div>
           </div>
 
-          {/* Colonne principale + jauge */}
-          <div className="flex items-start gap-11.5">
-            <div className="flex flex-1 flex-col gap-3.75">
+          {/* Jauge horizontale (mobile uniquement, en haut) */}
+          <RiskGaugeMobile percent={percent} mascotState={mascotState} className="lg:hidden" />
+
+          {/* Colonne principale + jauge latérale (desktop) */}
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:gap-11.5">
+            <div className="flex flex-1 flex-col gap-3 lg:gap-3.75">
               {/* Carte question */}
               <div
-                className="flex flex-col gap-3 rounded-[18px] px-[25.6px] py-[22.4px]"
+                className="flex flex-col gap-2 rounded-[18px] px-[25.6px] py-4 lg:gap-3 lg:py-[22.4px]"
                 style={{
                   backgroundColor: whiteA(0.04),
                   border: `0.8px solid ${whiteA(0.09)}`,
@@ -79,7 +84,7 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
               </div>
 
               {/* Réponses */}
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2 lg:gap-2.5">
                 {question.answers.map((a, i) => (
                   <AnswerOption
                     key={a.id}
@@ -115,24 +120,24 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
                 </div>
               )}
 
-              {/* Boutons */}
+              {/* Boutons (empilés pleine largeur sur mobile) */}
               {answered ? (
-                <div className="flex justify-end">
+                <div className="flex lg:justify-end">
                   <button
                     type="button"
                     onClick={quiz.next}
-                    className="flex cursor-pointer items-center justify-center gap-2 rounded-[43px] px-10.25 py-2.5 hover:brightness-110"
+                    className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-[43px] px-10.25 py-2.5 hover:brightness-110 lg:w-auto"
                     style={{ backgroundColor: palette.pink, ...nextBtnText }}>
                     {quiz.isLast ? "Terminer" : "Suivant"}
                     <FontAwesomeIcon icon={faArrowTurnDown} flip="horizontal" />
                   </button>
                 </div>
               ) : (
-                <div className="flex h-11.5 items-center justify-between gap-3.75">
+                <div className="flex flex-col gap-3 lg:h-11.5 lg:flex-row lg:items-center lg:justify-between lg:gap-3.75">
                   <button
                     type="button"
                     onClick={quiz.toggleHint}
-                    className="flex cursor-pointer items-center justify-center gap-2 rounded-[93px] px-4 py-2.5 hover:brightness-110"
+                    className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-[93px] px-4 py-2.5 hover:brightness-110 lg:w-auto"
                     style={{
                       backgroundColor: withAlpha(palette.pink, 0.4),
                       border: `1px solid ${palette.pink}`,
@@ -145,7 +150,7 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
                     <button
                       type="button"
                       onClick={quiz.validate}
-                      className="flex cursor-pointer items-center justify-center gap-2 rounded-[43px] bg-white/80 px-10.25 py-2.5 hover:bg-white"
+                      className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-[43px] bg-white/80 px-10.25 py-2.5 hover:bg-white lg:w-auto"
                       style={{
                         border: `1px solid ${whiteA(0.75)}`,
                         ...validateBtnText,
@@ -157,8 +162,10 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
               )}
             </div>
 
-            {/* Jauge latérale */}
-            <RiskGauge percent={percent} mascotState={mascotState} />
+            {/* Jauge latérale (desktop uniquement) */}
+            <div className="hidden shrink-0 lg:block">
+              <RiskGauge percent={percent} mascotState={mascotState} />
+            </div>
           </div>
         </div>
       </main>

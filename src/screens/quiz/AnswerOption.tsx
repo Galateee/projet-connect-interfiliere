@@ -61,7 +61,7 @@ function RightSlot({ answered, isSelected, isCorrect, number }: AnswerOptionProp
     );
   }
   return (
-    <span className="flex h-4.75 w-3.75 items-center justify-center rounded-sm" style={{ border: `0.8px solid ${whiteA(0.12)}` }}>
+    <span className="hidden h-4.75 w-3.75 items-center justify-center rounded-sm lg:flex" style={{ border: `0.8px solid ${whiteA(0.12)}` }}>
       <span style={answerNumber}>{number}</span>
     </span>
   );
@@ -82,7 +82,7 @@ export function AnswerOption(props: AnswerOptionProps) {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="flex items-center justify-between gap-3 rounded-[14px] px-[17.6px] py-[13.6px] text-left transition-colors disabled:cursor-default"
+      className="flex items-center justify-between gap-3 rounded-[14px] px-[17.6px] py-2.5 text-left transition-colors disabled:cursor-default lg:py-[13.6px]"
       style={{
         backgroundColor: showHover ? whiteA(0.08) : v.bg,
         border: `0.8px solid ${showHover ? whiteA(0.22) : v.border}`,
