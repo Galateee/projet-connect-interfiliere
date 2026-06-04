@@ -32,7 +32,7 @@ export const timelineLabel: CSSProperties = {
 export const situationEyebrow: CSSProperties = {
   fontFamily: OUTFIT,
   fontWeight: 700,
-  fontSize: "10.4px",
+  fontSize: "clamp(10px, 1.5vw, 10.4px)",
   lineHeight: "15.6px",
   letterSpacing: "1.46px",
   textTransform: "uppercase",
@@ -41,8 +41,8 @@ export const situationEyebrow: CSSProperties = {
 export const scenarioText: CSSProperties = {
   fontFamily: MANROPE,
   fontWeight: 500,
-  fontSize: "17.28px",
-  lineHeight: "28.51px",
+  fontSize: "clamp(14px, 2.5vw, 17.28px)",
+  lineHeight: "clamp(20px, 3.6vw, 28.51px)",
   color: "rgba(255, 255, 255, 0.92)",
 };
 
@@ -56,8 +56,8 @@ export const answerLetter: CSSProperties = {
 export const answerText: CSSProperties = {
   fontFamily: MANROPE,
   fontWeight: 500,
-  fontSize: "14.72px",
-  lineHeight: "22.08px",
+  fontSize: "clamp(14px, 2.4vw, 14.72px)",
+  lineHeight: "clamp(20px, 3.4vw, 22.08px)",
   color: "rgba(255, 255, 255, 0.85)",
 };
 export const answerNumber: CSSProperties = {

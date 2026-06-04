@@ -82,7 +82,7 @@ export function AnswerOption(props: AnswerOptionProps) {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="flex items-center justify-between gap-3 rounded-[14px] px-[17.6px] py-2.5 text-left transition-colors disabled:cursor-default lg:py-[13.6px]"
+      className="flex h-12.5 items-center justify-between gap-3 rounded-[14px] px-[17.6px] text-left transition-colors disabled:cursor-default lg:h-auto lg:py-[13.6px]"
       style={{
         backgroundColor: showHover ? whiteA(0.08) : v.bg,
         border: `0.8px solid ${showHover ? whiteA(0.22) : v.border}`,

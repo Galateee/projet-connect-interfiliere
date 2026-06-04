@@ -126,7 +126,7 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
                   <button
                     type="button"
                     onClick={quiz.next}
-                    className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-[43px] px-10.25 py-2.5 hover:brightness-110 lg:w-auto"
+                    className="flex h-9.25 w-full cursor-pointer items-center justify-center gap-2 rounded-[43px] px-10.25 py-2.5 hover:brightness-110 lg:h-auto lg:w-auto"
                     style={{ backgroundColor: palette.pink, ...nextBtnText }}>
                     {quiz.isLast ? "Terminer" : "Suivant"}
                     <FontAwesomeIcon icon={faArrowTurnDown} flip="horizontal" />
@@ -137,7 +137,7 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
                   <button
                     type="button"
                     onClick={quiz.toggleHint}
-                    className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-[93px] px-4 py-2.5 hover:brightness-110 lg:w-auto"
+                    className="flex h-9.25 w-full cursor-pointer items-center justify-center gap-2 rounded-[93px] px-4 py-2.5 hover:brightness-110 lg:h-auto lg:w-auto"
                     style={{
                       backgroundColor: withAlpha(palette.pink, 0.4),
                       border: `1px solid ${palette.pink}`,
@@ -150,7 +150,7 @@ export function QuizScreen({ onExit, onFinish }: QuizScreenProps) {
                     <button
                       type="button"
                       onClick={quiz.validate}
-                      className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-[43px] bg-white/80 px-10.25 py-2.5 hover:bg-white lg:w-auto"
+                      className="flex h-9.25 w-full cursor-pointer items-center justify-center gap-2 rounded-[43px] bg-white/80 px-10.25 py-2.5 hover:bg-white lg:h-auto lg:w-auto"
                       style={{
                         border: `1px solid ${whiteA(0.75)}`,
                         ...validateBtnText,
