@@ -19,7 +19,7 @@ export function Testimonials() {
           const tier = riskTier(t.score);
           const color = tier.color;
           return (
-            <Card key={i} className="flex h-65 w-73.25 flex-col justify-center gap-5 px-6.25">
+            <Card key={i} className="flex w-full flex-col gap-5 px-6.25 py-6 lg:h-65 lg:w-73.25 lg:justify-center lg:py-0">
               {/* Mascotte + jauge d'avis */}
               <div className="flex items-center gap-3">
                 <Mascot mood={INVERTED_MOOD[tier.level]} size={32} />

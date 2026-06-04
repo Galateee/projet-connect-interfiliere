@@ -13,8 +13,8 @@ type HeroProps = {
 const headingStyle: CSSProperties = {
   fontFamily: '"Outfit", system-ui, sans-serif',
   fontWeight: 900,
-  fontSize: "55px",
-  lineHeight: "59.84px",
+  fontSize: "clamp(31px, 8.4vw, 55px)",
+  lineHeight: "clamp(34px, 9.1vw, 59.84px)",
   letterSpacing: "-1.9px",
 };
 
@@ -44,7 +44,7 @@ export function Hero({ onStart }: HeroProps) {
 
       <p style={eyebrowPink}>Quiz — Managers &amp; Intelligence Artificielle</p>
 
-      <h1 className="whitespace-nowrap" style={headingStyle}>
+      <h1 className="lg:whitespace-nowrap" style={headingStyle}>
         Pourriez-vous être
         <br />
         remplacé par une IA ?
@@ -55,11 +55,13 @@ export function Hero({ onStart }: HeroProps) {
       </p>
 
       {/* Bouton + sous-texte */}
-      <div className="flex flex-col items-center gap-3.75">
-        <PrimaryButton onClick={onStart}>
+      <div className="flex w-full flex-col items-center gap-3.75 lg:w-auto">
+        <PrimaryButton onClick={onStart} className="w-full lg:w-auto">
           Commencer l'évaluation <FontAwesomeIcon icon={faArrowRight} />
         </PrimaryButton>
-        <p style={subTextStyle}>8 questions · ~5 minutes</p>
+        <p className="text-center" style={subTextStyle}>
+          8 questions · ~5 minutes
+        </p>
       </div>
     </div>
   );

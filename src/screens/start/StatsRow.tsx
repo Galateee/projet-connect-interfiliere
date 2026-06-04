@@ -17,15 +17,19 @@ export function StatsRow() {
         }
       />
 
-      {/* Cartes stat */}
+      {/* Cartes stat — lignes sur mobile, cartes colonnes sur desktop */}
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
         {stats.map((stat) => (
-          <Card key={stat.value} className="flex h-48.25 flex-col justify-center gap-2.5 px-6">
-            <p style={statValue}>{stat.value}</p>
-            <p style={statLabel}>{stat.label}</p>
-            <p className="pt-[3.2px]" style={statSource}>
-              {stat.source}
+          <Card key={stat.value} className="flex flex-row items-center gap-4 px-6 py-5 md:h-48.25 md:flex-col md:items-stretch md:justify-center md:gap-2.5 md:py-0">
+            <p className="shrink-0" style={statValue}>
+              {stat.value}
             </p>
+            <div className="flex flex-col gap-1 md:contents">
+              <p style={statLabel}>{stat.label}</p>
+              <p className="md:pt-[3.2px]" style={statSource}>
+                {stat.source}
+              </p>
+            </div>
           </Card>
         ))}
       </div>

@@ -29,7 +29,7 @@ export function HowItWorks() {
       {/* cartes instructions */}
       <div className="flex w-full flex-wrap justify-center gap-y-6 lg:flex-nowrap lg:justify-between">
         {steps.map((step) => (
-          <Card key={step.number} className="flex h-65.5 w-[288px] flex-col justify-center gap-4 px-6.25">
+          <Card key={step.number} className="flex w-full flex-col gap-4 px-6.25 py-6 lg:h-65.5 lg:w-[288px] lg:justify-center lg:py-0">
             {/* Icône + numéro */}
             <div className="flex items-center justify-between">
               <FontAwesomeIcon icon={STEP_ICONS[step.icon]} style={{ ...instrIcon, color: "#fff" }} />

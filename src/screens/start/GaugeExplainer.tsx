@@ -14,10 +14,10 @@ const AXIS = [100, 50, 10];
 
 export function GaugeExplainer() {
   return (
-    // Carte bordée, contenu centré
-    <Card className="flex h-98.25 w-full items-center justify-center gap-8.75">
+    // Carte bordée : colonne sur mobile, deux colonnes centrées sur desktop
+    <Card className="flex w-full flex-col items-stretch gap-8 p-6 lg:h-98.25 lg:flex-row lg:items-center lg:justify-center lg:gap-8.75 lg:p-0">
       {/* Colonne texte */}
-      <div className="flex w-160 shrink-0 flex-col gap-8">
+      <div className="flex w-full flex-col gap-8 lg:w-160 lg:shrink-0">
         {/* Titre + intro */}
         <div className="flex flex-col gap-4">
           <p style={eyebrowGreen}>La jauge IA</p>
@@ -33,11 +33,11 @@ export function GaugeExplainer() {
           {gaugeTiers.map((tier) => {
             const accent = TIER_COLOR[tier.color];
             return (
-              <div key={tier.level} className="flex items-center gap-3.25">
+              <div key={tier.level} className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-3.25">
                 <span className="w-11 shrink-0" style={{ ...tierRange, color: accent }}>
                   {tier.range}
                 </span>
-                <div className="h-1.25 w-61.5 shrink-0 overflow-hidden rounded-full" style={{ backgroundColor: withAlpha(accent, 0.2), border: `0.8px solid ${withAlpha(accent, 0.3)}` }}>
+                <div className="h-1.25 w-full shrink-0 overflow-hidden rounded-full lg:w-61.5" style={{ backgroundColor: withAlpha(accent, 0.2), border: `0.8px solid ${withAlpha(accent, 0.3)}` }}>
                   <div className="h-full rounded-full" style={{ width: "31%", backgroundColor: accent }} />
                 </div>
                 <span style={tierDesc}>
@@ -51,8 +51,8 @@ export function GaugeExplainer() {
         </div>
       </div>
 
-      {/* Jauge verticale (mascottes + graduations + barre dégradée) */}
-      <div className="flex h-69 items-stretch gap-3">
+      {/* Jauge verticale (mascottes + graduations + barre dégradée) — desktop seulement */}
+      <div className="hidden h-69 items-stretch gap-3 lg:flex">
         <div className="flex flex-col justify-between">
           <Mascot mood={0} size={24} />
           <Mascot mood={50} size={24} />

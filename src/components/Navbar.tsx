@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { BAR_BG, whiteA } from "../theme/palette";
 
-type NavAction = { label: string; onClick: () => void };
+type NavAction = { label: ReactNode; onClick: () => void };
 
 type NavbarProps = {
   back?: NavAction;
@@ -42,7 +42,7 @@ function Logo() {
 export function Navbar({ back, onLogoClick, cta, right }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md" style={{ backgroundColor: BAR_BG, borderBottom: `1px solid ${whiteA(0.2)}` }}>
-      <nav className="flex h-18 items-center justify-between px-25">
+      <nav className="flex h-18 items-center justify-between px-5 lg:px-25">
         {back ? (
           <button type="button" onClick={back.onClick} className="flex items-center gap-2 text-white/50 transition-colors hover:text-white" style={BACK_LINK}>
             <FontAwesomeIcon icon={faArrowLeft} />

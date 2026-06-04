@@ -21,23 +21,23 @@ export const eyebrowPink: CSSProperties = {
 export const sectionTitle: CSSProperties = {
   fontFamily: OUTFIT,
   fontWeight: 900,
-  fontSize: "40px",
-  lineHeight: "50.4px",
+  fontSize: "clamp(28px, 6.2vw, 40px)",
+  lineHeight: "clamp(34px, 7.8vw, 50.4px)",
   letterSpacing: "0.16px",
   color: "#fff",
 };
 
 export const testiTitle: CSSProperties = {
   ...sectionTitle,
-  lineHeight: "44.16px",
+  lineHeight: "clamp(31px, 6.9vw, 44.16px)",
   letterSpacing: "-1.152px",
 };
 
 export const ctaTitle: CSSProperties = {
   fontFamily: OUTFIT,
   fontWeight: 900,
-  fontSize: "48px",
-  lineHeight: "60.48px",
+  fontSize: "clamp(30px, 8vw, 48px)",
+  lineHeight: "clamp(38px, 10vw, 60.48px)",
   letterSpacing: "-1.152px",
   color: "#fff",
 };
@@ -110,8 +110,8 @@ export const eyebrowGreen: CSSProperties = {
 export const gaugeTitle: CSSProperties = {
   fontFamily: OUTFIT,
   fontWeight: 900,
-  fontSize: "32px",
-  lineHeight: "38.4px",
+  fontSize: "clamp(24px, 6vw, 32px)",
+  lineHeight: "clamp(29px, 7.2vw, 38.4px)",
   letterSpacing: "-0.96px",
   color: "#fff",
 };
