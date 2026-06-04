@@ -26,10 +26,14 @@ export function ResultHero({ summary, onSeeRecap }: ResultHeroProps) {
   ];
 
   return (
-    <section className="flex w-full flex-col items-center gap-5 rounded-[20px] px-10 pb-9 pt-11 text-center" style={{ backgroundColor: whiteA(0.04), border: `0.8px solid ${whiteA(0.09)}` }}>
+    <section
+      className="flex w-full flex-col items-center gap-5 rounded-[20px] px-6 pb-7 pt-8 text-center lg:px-10 lg:pb-9 lg:pt-11"
+      style={{ backgroundColor: whiteA(0.04), border: `0.8px solid ${whiteA(0.09)}` }}>
       <MascotAnimated state={verdict.mascot} size={104} loop />
 
-      <ResultGauge percent={percent} />
+      <div className="w-full px-4 lg:px-0">
+        <ResultGauge percent={percent} />
+      </div>
 
       <div className="flex flex-col gap-3.5">
         <h1 style={heroTitle}>{verdict.title}</h1>
@@ -37,14 +41,16 @@ export function ResultHero({ summary, onSeeRecap }: ResultHeroProps) {
       </div>
 
       {/* Chips de stats */}
-      <div className="flex w-full gap-3.5">
+      <div className="flex w-full gap-2 lg:gap-3.5">
         {stats.map((s) => (
-          <div key={s.caption} className="flex flex-1 flex-col items-center gap-1.5 rounded-2xl px-3 py-4" style={{ backgroundColor: whiteA(0.04), border: `0.8px solid ${whiteA(0.08)}` }}>
+          <div key={s.caption} className="flex flex-1 flex-col items-center gap-1.5 rounded-2xl px-2 py-4 lg:px-3" style={{ backgroundColor: whiteA(0.04), border: `0.8px solid ${whiteA(0.08)}` }}>
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={s.icon} style={{ color: s.color, fontSize: "20px" }} />
               <span style={{ ...statNumber, color: s.color }}>{s.value}</span>
             </span>
-            <span style={statCaption}>{s.caption}</span>
+            <span className="whitespace-nowrap" style={statCaption}>
+              {s.caption}
+            </span>
           </div>
         ))}
       </div>

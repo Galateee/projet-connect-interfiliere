@@ -23,7 +23,7 @@ export function TrainingCard() {
 
   return (
     <section
-      className="flex w-full flex-col gap-6 rounded-[20px] px-9 py-8"
+      className="flex w-full flex-col gap-6 rounded-[20px] px-5 py-6 lg:px-9 lg:py-8"
       style={{
         backgroundColor: whiteA(0.03),
         border: `1px solid ${withAlpha(palette.green, 0.4)}`,
@@ -38,12 +38,17 @@ export function TrainingCard() {
         <p style={formationPara}>Une formation conçue pour les managers qui veulent comprendre, utiliser et superviser l'IA — sans en avoir peur et sans en être esclave.</p>
       </div>
 
-      <div className="flex gap-3.5">
+      <div className="flex flex-col gap-3 lg:flex-row lg:gap-3.5">
         {PILLARS.map((p) => (
-          <div key={p.title} className="flex flex-1 flex-col gap-2 rounded-2xl px-4 py-4" style={{ backgroundColor: whiteA(0.04), border: `0.8px solid ${whiteA(0.08)}` }}>
-            <FontAwesomeIcon icon={p.icon} style={{ color: palette.green, fontSize: "16px" }} />
-            <span style={pillarTitle}>{p.title}</span>
-            <span style={pillarDesc}>{p.desc}</span>
+          <div
+            key={p.title}
+            className="flex flex-1 flex-row items-center gap-3 rounded-2xl px-4 py-4 lg:flex-col lg:items-start lg:gap-2"
+            style={{ backgroundColor: whiteA(0.04), border: `0.8px solid ${whiteA(0.08)}` }}>
+            <FontAwesomeIcon icon={p.icon} className="shrink-0" style={{ color: palette.green, fontSize: "16px" }} />
+            <div className="flex flex-col gap-1 lg:contents">
+              <span style={pillarTitle}>{p.title}</span>
+              <span style={pillarDesc}>{p.desc}</span>
+            </div>
           </div>
         ))}
       </div>
@@ -51,7 +56,7 @@ export function TrainingCard() {
       <button
         type="button"
         onClick={() => setVideoOpen(true)}
-        className="flex w-fit cursor-pointer items-center justify-center gap-2 rounded-[43px] px-7 py-2.5 transition-[filter] hover:brightness-110"
+        className="flex w-fit cursor-pointer items-center justify-center gap-2 self-center rounded-[43px] px-7 py-2.5 transition-[filter] hover:brightness-110 lg:self-start"
         style={{
           backgroundColor: palette.green,
           fontFamily: '"Outfit", system-ui, sans-serif',

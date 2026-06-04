@@ -16,9 +16,9 @@ const FAINT = "rgba(255, 255, 255, 0.35)";
 export const heroTitle: CSSProperties = {
   fontFamily: OUTFIT,
   fontWeight: 900,
-  fontSize: "36px",
-  lineHeight: "43px",
-  letterSpacing: "-1px",
+  fontSize: "clamp(20px, 5.4vw, 36px)",
+  lineHeight: "clamp(24px, 6vw, 43px)",
+  letterSpacing: "-0.7px",
   color: "#fff",
 };
 export const heroSubtitle: CSSProperties = {
@@ -49,15 +49,15 @@ export const gaugeValue: CSSProperties = {
 export const statNumber: CSSProperties = {
   fontFamily: OUTFIT,
   fontWeight: 900,
-  fontSize: "26px",
-  lineHeight: "30px",
+  fontSize: "clamp(20px, 5.4vw, 26px)",
+  lineHeight: "clamp(24px, 6.4vw, 30px)",
   letterSpacing: "-0.6px",
 };
 export const statCaption: CSSProperties = {
   fontFamily: MANROPE,
   fontWeight: 500,
-  fontSize: "11.5px",
-  lineHeight: "16px",
+  fontSize: "clamp(8.5px, 2.3vw, 11.5px)",
+  lineHeight: "clamp(12px, 3vw, 16px)",
   color: "rgba(255, 255, 255, 0.4)",
 };
 

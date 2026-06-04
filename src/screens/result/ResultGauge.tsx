@@ -23,7 +23,7 @@ export function ResultGauge({ percent }: ResultGaugeProps) {
       </div>
 
       {/* Piste + curseur */}
-      <div className="relative h-2 rounded-full" style={{ backgroundColor: whiteA(0.1) }}>
+      <div className="relative h-3 rounded-full" style={{ backgroundColor: whiteA(0.1) }}>
         <div className="absolute inset-y-0 left-0 rounded-full" style={{ width: `${p}%`, background: `linear-gradient(to right, ${riskColor(0)}, ${color})` }} />
         <div
           className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"

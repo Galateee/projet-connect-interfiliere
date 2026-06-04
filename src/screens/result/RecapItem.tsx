@@ -78,7 +78,7 @@ export function RecapItem({ number, record }: RecapItemProps) {
 
           {/* Encart explication (feedback de la réponse choisie) */}
           {picked?.feedback && (
-            <div className="mt-3 rounded-xl px-4 py-3.5" style={{ backgroundColor: whiteA(0.08), border: `0.8px solid ${whiteA(0.15)}` }}>
+            <div className="rounded-xl px-4 py-3.5" style={{ backgroundColor: whiteA(0.12), border: `0.8px solid ${whiteA(0.25)}` }}>
               <p>
                 <FontAwesomeIcon icon={faLightbulb} className="mr-2" style={{ color: palette.amber, fontSize: "13px" }} />
                 <span style={explanationLabel}>Explication</span>

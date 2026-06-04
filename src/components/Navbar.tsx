@@ -10,6 +10,7 @@ type NavbarProps = {
   onLogoClick?: () => void;
   cta?: NavAction;
   right?: ReactNode;
+  ctaDesktopOnly?: boolean;
 };
 
 const BACK_LINK: CSSProperties = {
@@ -39,10 +40,10 @@ function Logo() {
  *   • Quiz       → retour accueil + compteur de questions
  *   • Résultats  → retour accueil + CTA « Recommencer l'évaluation »
  */
-export function Navbar({ back, onLogoClick, cta, right }: NavbarProps) {
+export function Navbar({ back, onLogoClick, cta, right, ctaDesktopOnly = false }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md" style={{ backgroundColor: BAR_BG, borderBottom: `1px solid ${whiteA(0.2)}` }}>
-      <nav className="flex h-18 items-center justify-between px-5 lg:px-25">
+      <nav className={`flex h-18 items-center px-5 lg:px-25 lg:justify-between ${ctaDesktopOnly ? "justify-center" : "justify-between"}`}>
         {back ? (
           <button type="button" onClick={back.onClick} className="flex items-center gap-2 text-white/50 transition-colors hover:text-white" style={BACK_LINK}>
             <FontAwesomeIcon icon={faArrowLeft} />
@@ -60,7 +61,7 @@ export function Navbar({ back, onLogoClick, cta, right }: NavbarProps) {
           <button
             type="button"
             onClick={cta.onClick}
-            className="flex items-center justify-center gap-2.5 rounded-[43px] bg-pink px-3.25 py-1.5 transition-colors hover:bg-pink-strong"
+            className={`items-center justify-center gap-2.5 rounded-[43px] bg-pink px-3.25 py-1.5 transition-colors hover:bg-pink-strong ${ctaDesktopOnly ? "hidden lg:flex" : "flex"}`}
             style={CTA_TEXT}>
             {cta.label} <FontAwesomeIcon icon={faArrowRight} />
           </button>
