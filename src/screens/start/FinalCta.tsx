@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Mascot } from "../../components/Mascot";
+import { MascotAnimated } from "../../components/Mascot";
 import { PrimaryButton } from "../../components/ui";
 import { ctaPara, ctaSubtext, ctaTitle } from "./styles";
 
@@ -11,7 +11,7 @@ type FinalCtaProps = {
 export function FinalCta({ onStart }: FinalCtaProps) {
   return (
     <section className="flex w-full max-w-181 flex-col items-center gap-10 text-center">
-      <Mascot size={72} className="animate-float" />
+      <MascotAnimated state="idle" size={98} className="animate-float -mb-8" />
 
       {/* Titre + paragraphe */}
       <div className="flex flex-col gap-6.25">

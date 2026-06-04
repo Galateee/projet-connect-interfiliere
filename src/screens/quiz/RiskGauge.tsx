@@ -1,27 +1,28 @@
-import { Mascot } from "../../components/Mascot";
+import { MascotAnimated, type MascotState } from "../../components/Mascot";
 import { whiteA } from "../../theme/palette";
 import { clampPercent, riskColor, riskTier } from "../../theme/risk";
 import { gaugeAxis, gaugeCaption, gaugePercent, gaugeTierLabel } from "./quizStyles";
 
 type RiskGaugeProps = {
   percent: number;
+  mascotState: MascotState;
 };
 
 const AXIS = [100, 75, 50, 25, 0];
 const TRACK_HEIGHT = 200;
 const FILL_MIN = 24;
 
-export function RiskGauge({ percent }: RiskGaugeProps) {
+export function RiskGauge({ percent, mascotState }: RiskGaugeProps) {
   const clamped = clampPercent(percent);
   const color = riskColor(clamped);
-  const { label, mood } = riskTier(clamped);
+  const { label } = riskTier(clamped);
   const fillHeight = FILL_MIN + (clamped / 100) * (TRACK_HEIGHT - FILL_MIN);
 
   return (
     <div className="flex w-18 shrink-0 flex-col items-center justify-center gap-6.25">
-      {/* Mascotte + palier */}
+      {/* Mascotte (réactive) + palier */}
       <div className="flex flex-col items-center gap-2.5">
-        <Mascot mood={mood} size={52} />
+        <MascotAnimated state={mascotState} size={84} preload />
         <span style={{ ...gaugeTierLabel, color }}>{label}</span>
       </div>
 

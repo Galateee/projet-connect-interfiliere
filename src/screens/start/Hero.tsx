@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Mascot } from "../../components/Mascot";
+import { MascotAnimated } from "../../components/Mascot";
 import { PrimaryButton } from "../../components/ui";
 import { eyebrowPink } from "./styles";
 
@@ -40,14 +40,14 @@ export function Hero({ onStart }: HeroProps) {
   return (
     // Pile verticale centrée
     <div className="flex w-full max-w-127.25 flex-col items-center gap-6.5 text-center">
-      <Mascot size={80} className="animate-float" />
+      <MascotAnimated state="idle" size={110} className="animate-float -mb-6" />
 
       <p style={eyebrowPink}>Quiz — Managers &amp; Intelligence Artificielle</p>
 
       <h1 className="whitespace-nowrap" style={headingStyle}>
         Pourriez-vous être
         <br />
-        remplacé par une IA&nbsp;?
+        remplacé par une IA ?
       </h1>
 
       <p className="max-w-110" style={paragraphStyle}>

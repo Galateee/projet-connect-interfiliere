@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
 import { BAR_BG, whiteA } from "../theme/palette";
-import { Mascot } from "./Mascot";
 
 const footerText: CSSProperties = {
   fontFamily: '"Outfit", system-ui, sans-serif',
@@ -19,11 +18,8 @@ export function Footer() {
         backgroundColor: BAR_BG,
         borderTop: `1px solid ${whiteA(0.45)}`,
       }}>
-      {/* mascotte + nom */}
-      <div className="flex items-center gap-3.75">
-        <Mascot size={20} />
-        <span style={footerText}>IA ou pas IA ? · Quiz pour managers</span>
-      </div>
+      {/* logo */}
+      <img src="/logo.png" width={85} height={19.75} alt="Manager IA Academy" style={{ objectFit: "contain" }} />
 
       {/* liens légaux */}
       <div className="flex items-center gap-1" style={footerText}>

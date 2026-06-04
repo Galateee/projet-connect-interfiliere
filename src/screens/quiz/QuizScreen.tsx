@@ -26,7 +26,7 @@ const GLOW_WRONG = glow(palette.red, 0.1);
 
 export function QuizScreen({ onExit }: QuizScreenProps) {
   const quiz = useQuiz(onExit);
-  const { question, index, total, percent, history, selectedId, selected, answered, isCorrect, lastCorrect, hintOpen } = quiz;
+  const { question, index, total, percent, history, selectedId, selected, answered, isCorrect, lastCorrect, mascotState, hintOpen } = quiz;
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -161,7 +161,7 @@ export function QuizScreen({ onExit }: QuizScreenProps) {
             </div>
 
             {/* Jauge latérale */}
-            <RiskGauge percent={percent} />
+            <RiskGauge percent={percent} mascotState={mascotState} />
           </div>
         </div>
       </main>

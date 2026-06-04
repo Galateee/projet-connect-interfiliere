@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { BAR_BG, whiteA } from "../theme/palette";
-import { Mascot } from "./Mascot";
 
 type NavbarProps = {
   onStart: () => void;
@@ -16,19 +15,7 @@ export function Navbar({ onStart }: NavbarProps) {
         borderBottom: `1px solid ${whiteA(0.2)}`,
       }}>
       <nav className="flex h-18 items-center justify-between px-25">
-        <div className="flex items-center gap-3.75">
-          <Mascot size={28} />
-          <span
-            style={{
-              fontFamily: '"Outfit", system-ui, sans-serif',
-              fontWeight: 800,
-              fontSize: "15.2px",
-              lineHeight: "22.8px",
-              letterSpacing: "-0.304px",
-            }}>
-            IA ou pas IA ?
-          </span>
-        </div>
+        <img src="/logo.png" width={129} height={29.97} alt="Manager IA Academy" style={{ objectFit: "contain" }} />
         <button
           type="button"
           onClick={onStart}

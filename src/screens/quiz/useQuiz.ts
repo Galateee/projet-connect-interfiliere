@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { questions } from "../../data/questions";
 import type { Answer, Question } from "../../types/quiz";
 import { clampPercent } from "../../theme/risk";
+import { MASCOT_REACTION_MS, type MascotState } from "../../components/Mascot";
 
 /**
  * Machine à états du quiz, isolée de la vue : sélection d'une réponse,
@@ -20,6 +21,7 @@ export type QuizController = {
   answered: boolean;
   isCorrect: boolean;
   lastCorrect: boolean;
+  mascotState: MascotState;
   hintOpen: boolean;
   select: (id: string) => void;
   validate: () => void;
@@ -36,6 +38,7 @@ export function useQuiz(onFinish: () => void): QuizController {
   const [answered, setAnswered] = useState(false);
   const [hintOpen, setHintOpen] = useState(false);
   const [lastCorrect, setLastCorrect] = useState(false);
+  const [mascotState, setMascotState] = useState<MascotState>("idle");
 
   const question = questions[index];
   const selected = question.answers.find((a) => a.id === selectedId) ?? null;
@@ -47,9 +50,11 @@ export function useQuiz(onFinish: () => void): QuizController {
 
   const validate = useCallback(() => {
     if (!selected || answered) return;
+    const correct = !!selected.isOptimal;
     setPercent((p) => clampPercent(p + selected.impact.replaceability));
-    setLastCorrect(!!selected.isOptimal);
-    setHistory((h) => [...h, !!selected.isOptimal]);
+    setLastCorrect(correct);
+    setHistory((h) => [...h, correct]);
+    setMascotState(correct ? "angry" : "happy");
     setAnswered(true);
     setHintOpen(false);
   }, [selected, answered]);
@@ -64,7 +69,15 @@ export function useQuiz(onFinish: () => void): QuizController {
     setSelectedId(null);
     setAnswered(false);
     setHintOpen(false);
+    setMascotState("idle");
   }, [answered, isLast, onFinish]);
+
+  // Retour automatique de la mascotte à l'état neutre après sa réaction.
+  useEffect(() => {
+    if (mascotState === "idle") return;
+    const timer = setTimeout(() => setMascotState("idle"), MASCOT_REACTION_MS);
+    return () => clearTimeout(timer);
+  }, [mascotState]);
 
   // Raccourcis clavier : 1–4 pour choisir, Entrée pour valider / passer.
   useEffect(() => {
@@ -97,6 +110,7 @@ export function useQuiz(onFinish: () => void): QuizController {
     answered,
     isCorrect,
     lastCorrect,
+    mascotState,
     hintOpen,
     select,
     validate,

@@ -13,6 +13,7 @@ export const palette = {
   green: "#72ff67",
   purple: "#a855f7",
   purpleSoft: "#c4b5fd",
+  bleu: "#3596fe",
 } as const;
 
 /** Blanc avec opacité — raccourci pour les surfaces/textes atténués. */
