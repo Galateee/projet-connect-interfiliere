@@ -18,7 +18,7 @@ export function FinalCta({ onStart }: FinalCtaProps) {
         <h2 style={ctaTitle}>Prêts à tester vos compétences&nbsp;?</h2>
         {/* Paragraphe */}
         <p style={ctaPara}>
-          Huit situations concrètes, cinq minutes, un verdict sans détour. Découvrez dès maintenant à quel point votre rôle résiste à l'IA — et repartez avec des pistes pour rester indispensable.
+          Dix situations concrètes, cinq minutes, un verdict sans détour. Découvrez dès maintenant à quel point votre rôle résiste à l'IA — et repartez avec des pistes pour rester indispensable.
         </p>
       </div>
 

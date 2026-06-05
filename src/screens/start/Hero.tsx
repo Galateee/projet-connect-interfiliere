@@ -51,7 +51,7 @@ export function Hero({ onStart }: HeroProps) {
       </h1>
 
       <p className="max-w-110" style={paragraphStyle}>
-        Répondez à 8 situations inspirées du quotidien des managers et découvrez à quel point l'IA pourrait accomplir vos missions aujourd'hui.
+        Répondez à 10 situations inspirées du quotidien des managers et découvrez à quel point l'IA pourrait accomplir vos missions aujourd'hui.
       </p>
 
       {/* Bouton + sous-texte */}
@@ -60,7 +60,7 @@ export function Hero({ onStart }: HeroProps) {
           Commencer l'évaluation <FontAwesomeIcon icon={faArrowRight} />
         </PrimaryButton>
         <p className="text-center" style={subTextStyle}>
-          8 questions · ~5 minutes
+          10 questions · ~5 minutes
         </p>
       </div>
     </div>
